@@ -8,21 +8,18 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@/api/*": ["./src/api/*"],
       "@/assets/*": ["./src/assets/*"],
       "@/components/*": ["./src/components/*"],
       "@/context/*": ["./src/context/*"],
-      "@/core/*": ["./src/core/*"],
       "@/contract/*": ["./src/contract/*"],
+      "@/core/*": ["./src/core/*"],
       "@/features/*": ["./src/features/*"],
       "@/hooks/*": ["./src/hooks/*"],
       "@/layouts/*": ["./src/layouts/*"],
       "@/lib/*": ["./src/lib/*"],
       "@/modules/*": ["./src/modules/*"],
       "@/pages/*": ["./src/pages/*"],
-      "@/routes/*": ["./src/routes/*"],
-      "@/schemas/*": ["./src/schemas/*"],
-      "@/types/*": ["./src/types/*"]
+      "@/schemas/*": ["./src/schemas/*"]
     }
   }
 }
