@@ -1,23 +1,20 @@
-import { ComponentExample } from "@/components/component-example";
 import {
   createBrowserRouter as Create,
   RouterProvider,
 } from "react-router-dom";
 import RootLayout from "@/layouts/RootLayout";
-const router = Create([
-  {
-    path: "/",
-    element: <RootLayout />,
-    children: [
-      {
-        path: "/",
-        element: <ComponentExample />,
-      },
-    ],
-  },
-]);
+import { PagesError } from "@/routes/error.routes";
+import { PagesAuth } from "@/routes/auth.routes";
+import { PagesUser } from "@/routes/user.routes";
 
 export function App() {
+  const router = Create([
+    {
+      path: "/",
+      element: <RootLayout />,
+      children: [...PagesUser, ...PagesError, ...PagesAuth],
+    },
+  ]);
   return <RouterProvider router={router} />;
 }
 
