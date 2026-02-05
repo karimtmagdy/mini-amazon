@@ -221,7 +221,11 @@ function FieldError({
     <div
       role="alert"
       data-slot="field-error"
-      className={cn("text-destructive text-sm font-normal", className)}
+      className={cn(
+        "text-destructive text-sm font-normal",
+        className,
+        window.location.pathname.includes("/auth") && "text-xs @lg:text-sm",
+      )}
       {...props}
     >
       {content}

@@ -1,13 +1,13 @@
 import { type RouteObject } from "react-router-dom";
 import { lazy, Suspense } from "react";
 const ChangePassword = lazy(() => {
-  return import("@/pages/auth/ChangePassword");
+  return import("@/pages/auth/ChangePasswordPage");
 });
-const ForgotPassword = lazy(() => {
-  return import("@/pages/auth/ForgotPassword");
+const ForgotPasswordPage = lazy(() => {
+  return import("@/pages/auth/ForgotPasswordPage");
 });
-const ResetPassword = lazy(() => {
-  return import("@/pages/auth/ResetPassword");
+const ResetPasswordPage = lazy(() => {
+  return import("@/pages/auth/ResetPasswordPage");
 });
 const SignUpPage = lazy(() => {
   return import("@/pages/auth/SignUpPage");
@@ -41,13 +41,19 @@ export const PagesAuth = [
       {
         path: "forgot-password",
         element: (
-          <Suspense fallback={<AuthFallback />} children={<ForgotPassword />} />
+          <Suspense
+            fallback={<AuthFallback />}
+            children={<ForgotPasswordPage />}
+          />
         ),
       },
       {
         path: "reset-password",
         element: (
-          <Suspense fallback={<AuthFallback />} children={<ResetPassword />} />
+          <Suspense
+            fallback={<AuthFallback />}
+            children={<ResetPasswordPage />}
+          />
         ),
       },
     ],
@@ -56,8 +62,8 @@ export const PagesAuth = [
 
 function AuthFallback() {
   return (
-    <div className="flex items-center justify-center h-dvh">
-      <Spinner className="size-10 text-primary" />
+    <div className="flex h-dvh items-center justify-center">
+      <Spinner className="text-primary size-10" />
     </div>
   );
 }
