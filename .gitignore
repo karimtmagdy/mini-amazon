@@ -23,4 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 /git_push_guide.md
+/git.guide.push-pull-merge.md
 /test.md
+ 
