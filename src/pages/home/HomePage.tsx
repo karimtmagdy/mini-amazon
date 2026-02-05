@@ -1,3 +1,9 @@
+import { ComponentExample } from "@/components/component-example";
+
 export default function HomePage() {
-  return <div>HomePage</div>;
+  return (
+    <div>
+      <ComponentExample />
+    </div>
+  );
 }
