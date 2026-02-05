@@ -3,9 +3,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import RootLayout from "@/layouts/RootLayout";
-import { PagesError } from "@/routes/error.routes";
-import { PagesAuth } from "@/routes/auth.routes";
-import { PagesUser } from "@/routes/user.routes";
+import { PagesError } from "@/core/router/error.routes";
+import { PagesAuth } from "@/core/router/auth.routes";
+import { PagesUser } from "@/core/router/user.routes";
 
 export function App() {
   const router = Create([
