@@ -5,24 +5,24 @@ import { useNavigate } from "react-router-dom";
 export default function NotFoundPage() {
   const navigate = useNavigate();
   return (
-    <section className="flex flex-col items-center justify-center h-screen">
+    <section className="flex h-screen flex-col items-center justify-center">
       <strong
         aria-label="404"
-        className="@lg:text-6xl @md:text-5xl @sm:text-4xl text-3xl font-bold text-destructive"
+        className="text-destructive text-3xl font-bold @sm:text-4xl @md:text-5xl @lg:text-6xl"
       >
         404
       </strong>
       <h1
         aria-label="Page Not Found"
-        className="@lg:text-5xl uppercase   text-2xl font-bold"
+        className="text-2xl font-bold uppercase @lg:text-5xl"
       >
         Page Not Found
       </h1>
-      <div className="  text-center text-sm @lg:text-base">
+      <div className="text-center text-sm @lg:text-base">
         <p className="">It seems the page you're looking for doesn't exist.</p>
         <small
           aria-label="Sorry, the page you are looking for does not exist."
-          className=" text-muted-foreground     "
+          className="text-muted-foreground"
         >
           Sorry, the page you are looking for does not exist.
         </small>

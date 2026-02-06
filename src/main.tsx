@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { DirectionProvider } from "@/components/ui/direction";
+import { DirectionProvider } from "@/components/ui/direction.tsx";
 import { Analytics } from "@vercel/analytics/react";
 import "./index.css";
 import App from "./App.tsx";
