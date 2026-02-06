@@ -31,11 +31,8 @@ export default function NavSecondary({
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
       <SidebarGroupLabel>Secondary</SidebarGroupLabel>
-<<<<<<< HEAD
-      <SidebarMenu >
-=======
+
       <SidebarMenu>
->>>>>>> defa72a9243d5ded287c430a137df508d242ba01
         {items.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
@@ -44,11 +41,7 @@ export default function NavSecondary({
                 <span>{item.name}</span>
               </NavLink>
             </SidebarMenuButton>
-<<<<<<< HEAD
-            <DropdownMenu >
-=======
             <DropdownMenu>
->>>>>>> defa72a9243d5ded287c430a137df508d242ba01
               <DropdownMenuTrigger asChild>
                 <SidebarMenuAction showOnHover>
                   <Icon.MoreHorizontalIcon />
