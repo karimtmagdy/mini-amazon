@@ -31,7 +31,7 @@ export default function NavSecondary({
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
       <SidebarGroupLabel>Secondary</SidebarGroupLabel>
-      <SidebarMenu >
+      <SidebarMenu>
         {items.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
@@ -40,7 +40,7 @@ export default function NavSecondary({
                 <span>{item.name}</span>
               </NavLink>
             </SidebarMenuButton>
-            <DropdownMenu >
+            <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuAction showOnHover>
                   <Icon.MoreHorizontalIcon />

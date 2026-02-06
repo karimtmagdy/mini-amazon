@@ -25,7 +25,7 @@ export default function AdminSidebar({
             <NavMain items={data.main} />
             <NavDocuments items={data.documents} />
             <NavProjects items={data.projects} />
-            <NavSecondary items={data.secondary} /> 
+            <NavSecondary items={data.secondary} />
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>

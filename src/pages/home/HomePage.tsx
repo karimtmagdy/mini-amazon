@@ -1,4 +1,4 @@
-import { ComponentExample } from "@/components/component-example";
+// import { ComponentExample } from "@/components/component-example";
 // import { DataTable } from "./data-table";
 // import { useState } from "react";
 
@@ -7,7 +7,8 @@ export default function HomePage() {
   return (
     <div>
       {/* <DataTable selectedItems={selectedItems} onSelectionChange={setSelectedItems} /> */}
-      <ComponentExample />
+      {/* <ComponentExample /> */}
+      home page
     </div>
   );
 }
