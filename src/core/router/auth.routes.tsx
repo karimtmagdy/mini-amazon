@@ -16,9 +16,11 @@ const SignInPage = lazy(() => {
   return import("@/pages/auth/SignInPage");
 });
 import { Spinner } from "@/components/ui/spinner";
+import AuthLayout from "@/layouts/AuthLayout";
 export const PagesAuth = [
   {
     path: "auth",
+    Component: AuthLayout,
     children: [
       {
         path: "register",

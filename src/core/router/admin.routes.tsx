@@ -1,11 +1,10 @@
 import { type RouteObject } from "react-router-dom";
 import HomePage from "@/pages/home/HomePage";
-import UserLayout from "@/layouts/UserLayout";
-
-export const PagesUser = [
+import AdminLayout from "@/layouts/AdminLayout";
+export const PagesAdmin = [
   {
-    path: "",
-    Component: UserLayout,
+    path: "admin",
+    Component: AdminLayout,
     children: [
       {
         path: "",
