@@ -13,6 +13,7 @@ import { data } from "@/lib/links/data-menu-admin";
 import { NavDocuments } from ".";
 import { NavProjects } from ".";
 import { NavSecondary } from ".";
+import { NavUser } from "./NavUser";
 export default function AdminSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
@@ -25,12 +26,14 @@ export default function AdminSidebar({
             <NavMain items={data.main} />
             <NavDocuments items={data.documents} />
             <NavProjects items={data.projects} />
-            <NavSecondary items={data.secondary} /> 
+            <NavSecondary items={data.secondary} />
             <NavSecondary items={data.secondary} />
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>fo</SidebarFooter>
+      <SidebarFooter>
+        <NavUser />
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   );

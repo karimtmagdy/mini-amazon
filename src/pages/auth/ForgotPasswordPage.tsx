@@ -3,6 +3,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Field } from "@/components/ui/field";
 import { HeaderSubmitionForm } from "@/components/common/auth/HeaderSubmitionForm";
 import ForgotPasswordForm from "@/features/auth/ForgotPasswordForm";
+import { Icon } from "@/assets/icon/icons";
 
 export default function ForgotPasswordPage() {
   return (
@@ -16,12 +17,14 @@ export default function ForgotPasswordPage() {
           <ForgotPasswordForm />
         </CardContent>
         <CardFooter>
-          <Field orientation="horizontal">
-            <Button type="button" variant="outline">
-              Back to Login
-            </Button>
-            <Button type="submit" form="forgot-password-form">
-              Send Reset Link
+          <Field orientation="responsive">
+            <Button
+              type="submit"
+              className="w-full"
+              form="forgot-password-form"
+              disabled
+            >
+              <Icon.LoaderIcon /> Send
             </Button>
           </Field>
         </CardFooter>

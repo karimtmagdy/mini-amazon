@@ -4,11 +4,11 @@ import { Separator } from "@/components/ui/separator";
 import {
   ToggleAdminIndicator,
   ToggleThemeIndicator,
+  ToggleUserMenuIndicator,
 } from "@/components/atom/toggle";
 import RootHeader from "@/components/common/header/RootHeader";
 import { Button } from "@/components/ui/button";
-import { Bell, HelpCircle, Settings } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Bell, HelpCircle, Settings } from "lucide-react"; 
 
 export default function AdminHeader() {
   return (
@@ -49,11 +49,8 @@ export default function AdminHeader() {
         >
           <Settings className="h-4 w-4" />
         </Button>
-        <Avatar className="h-7 w-7 md:h-8 md:w-8">
-          <AvatarImage src="/placeholder.svg?height=32&width=32" />
-          <AvatarFallback>JD</AvatarFallback>
-        </Avatar>
         <ToggleThemeIndicator />
+        <ToggleUserMenuIndicator />
         <ToggleAdminIndicator />
       </div>
     </RootHeader>
