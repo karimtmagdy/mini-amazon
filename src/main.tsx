@@ -1,8 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { DirectionProvider } from "@/components/ui/direction.tsx";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
+// import { Analytics } from "@vercel/analytics/react";
+// import { SpeedInsights } from "@vercel/speed-insights/react";
 import "./index.css";
 // import "@/i18n/i18n";
 import "@/core/api/http";
@@ -19,8 +19,8 @@ createRoot(document.getElementById("root")!).render(
         <ThemeProvider>
           <App />
         </ThemeProvider>
-        <Analytics debug={import.meta.env.DEV} />
-        <SpeedInsights debug={import.meta.env.DEV} />
+        {/* <Analytics debug={import.meta.env.DEV} /> */}
+        {/* <SpeedInsights debug={import.meta.env.DEV} /> */}
         <ReactQueryDevtools initialIsOpen={false} />
       </DirectionProvider>
     </QueryClientProvider>
