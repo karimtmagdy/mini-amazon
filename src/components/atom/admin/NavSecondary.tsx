@@ -31,6 +31,7 @@ export default function NavSecondary({
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
       <SidebarGroupLabel>Secondary</SidebarGroupLabel>
+
       <SidebarMenu>
         {items.map((item) => (
           <SidebarMenuItem key={item.name}>

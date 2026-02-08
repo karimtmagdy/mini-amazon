@@ -24,8 +24,3 @@ export const API_ADMIN_SUBCATEGORIES = "/admin/subcategories";
 export const API_ADMIN_COUPONS = "/admin/coupons";
 
 
-// authentication
-export const API_SIGNIN = "/auth/login";
-export const API_SIGNUP = "/auth/register";
-export const API_SIGNOUT = "/auth/logout";
-export const API_FORGOT_PASSWORD = "/auth/forgot-password";

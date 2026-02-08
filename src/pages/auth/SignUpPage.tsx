@@ -3,6 +3,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Field } from "@/components/ui/field";
 import { HeaderSubmitionForm } from "@/components/common/auth/HeaderSubmitionForm";
 import RegisterForm from "@/features/auth/RegisterForm";
+import { HaveAccount } from "@/components/common/auth/HaveAccount";
 
 export default function SignUpPage() {
   return (
@@ -15,15 +16,16 @@ export default function SignUpPage() {
         <CardContent>
           <RegisterForm />
         </CardContent>
-        <CardFooter>
-          <Field orientation="horizontal">
-            <Button type="button" variant="outline">
-              Sign up with Google
-            </Button>
-            <Button type="submit" form="sign-up-form">
+        <CardFooter className="flex-col gap-2">
+          <Field orientation="responsive">
+            <Button type="submit" className="w-full" form="sign-up-form">
               Register
             </Button>
+            <Button type="button" variant="outline" className="w-full">
+              Sign up with Google
+            </Button>
           </Field>
+          <HaveAccount />
         </CardFooter>
       </Card>
     </div>

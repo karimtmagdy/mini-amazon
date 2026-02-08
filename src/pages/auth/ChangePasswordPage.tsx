@@ -17,11 +17,11 @@ export default function ChangePasswordPage() {
         </CardContent>
         <CardFooter>
           <Field orientation="horizontal">
-            <Button type="button" variant="outline">
-              Back to Login
-            </Button>
             <Button type="submit" form="change-password-form">
               Change Password
+            </Button>
+            <Button type="button" variant="outline">
+              Back to Login
             </Button>
           </Field>
         </CardFooter>

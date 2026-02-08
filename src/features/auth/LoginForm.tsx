@@ -1,7 +1,4 @@
-import * as React from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, useForm } from "react-hook-form";
-import { toast } from "sonner";
+import { Controller } from "react-hook-form";
 import {
   Field,
   FieldDescription,
@@ -16,32 +13,10 @@ import {
 } from "@/components/ui/input-group";
 import { MailIcon } from "lucide-react";
 import { Link } from "react-router-dom";
-import { formSignInSchema, type FormSignInSchema } from "@/schemas/auth.schema";
+import { useAuthFormLogin } from "@/hooks/use-auth-form";
 export default function LoginForm() {
-  const form = useForm<FormSignInSchema>({
-    resolver: zodResolver(formSignInSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
+  const { form, onSubmit } = useAuthFormLogin();
 
-  function onSubmit(data: FormSignInSchema) {
-    toast("You submitted the following values:", {
-      description: (
-        <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
-          <code>{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-      position: "bottom-right",
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
-      style: {
-        "--border-radius": "calc(var(--radius)  + 4px)",
-      } as React.CSSProperties,
-    });
-  }
   return (
     <form id="sign-in-form" onSubmit={form.handleSubmit(onSubmit)}>
       <FieldGroup>
