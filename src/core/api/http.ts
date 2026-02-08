@@ -1,24 +1,22 @@
-import axios from "axios";
+import axios, { type InternalAxiosRequestConfig } from "axios";
 import { storageUtils } from "@/lib/tokens";
+import { authApi } from "@/core/auth/api.auth.service";
+import {
+  PATH_REFRESH_TOKEN,
+  PATH_SIGNIN,
+  PATH_SIGNUP,
+} from "@/lib/links/paths";
 
 export const http = axios.create({
   baseURL: import.meta.env.VITE_PROD_URL ?? import.meta.env.VITE_DEV_URL,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
-    "Access-Control-Allow-Credentials": "true",
-    // "Access-Control-Allow-Origin": "*",
-    // "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-    // "Access-Control-Allow-Headers": "Content-Type, Authorization",
   },
   withCredentials: true,
 });
 
-http.interceptors.response.use(
-  (response) => response.data,
-  (error) => Promise.reject(error),
-);
-
+// Request interceptor for attaching tokens
 http.interceptors.request.use((config) => {
   const token = storageUtils.getToken();
   if (token) {
@@ -26,3 +24,53 @@ http.interceptors.request.use((config) => {
   }
   return config;
 });
+
+// Response interceptor for data unwrapping and token refresh
+http.interceptors.response.use(
+  (response) => response.data,
+  async (error) => {
+    const originalRequest = error.config as InternalAxiosRequestConfig & {
+      _retry?: boolean;
+    };
+
+    // Paths that should NOT trigger a retry/refresh
+    const isAuthRequest =
+      originalRequest.url === PATH_SIGNIN ||
+      originalRequest.url === PATH_SIGNUP ||
+      originalRequest.url === PATH_REFRESH_TOKEN;
+
+    // Handle 401 Unauthorized errors
+    if (
+      error.response?.status === 401 &&
+      !originalRequest._retry &&
+      !isAuthRequest
+    ) {
+      originalRequest._retry = true;
+
+      try {
+        // According to your log, the response is: { status, message, data: { token } }
+        const res = await authApi.refresh();
+        const newToken = res?.data?.token;
+
+        if (newToken) {
+          // Update the token in localStorage
+          storageUtils.setToken(newToken);
+
+          // Update headers for current retry and future requests
+          originalRequest.headers.Authorization = `Bearer ${newToken}`;
+          http.defaults.headers.common["Authorization"] = `Bearer ${newToken}`;
+
+          return http(originalRequest);
+        }
+      } catch (refreshError) {
+        // If refresh fails, sign out the user
+        storageUtils.removeToken();
+        storageUtils.removeUser();
+        window.location.href = PATH_SIGNIN;
+        return Promise.reject(refreshError);
+      }
+    }
+
+    return Promise.reject(error);
+  },
+);

@@ -57,7 +57,9 @@ export const authApi = {
     return res;
   },
   refresh: async () => {
-    const res = await http.post(PATH_REFRESH_TOKEN);
+    const res = (await http.post<ResponseDto<{ token: string }>>(
+      PATH_REFRESH_TOKEN,
+    )) as unknown as ResponseDto<{ token: string }>;
     return res;
   },
   //   verifyEmail: async (data: FormVerifyEmailSchema) => {
