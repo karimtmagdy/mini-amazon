@@ -22,8 +22,7 @@ export default function AdminSidebar({
     <Sidebar collapsible="icon" {...props}>
       <SidebarContent>
         <SidebarHeader>
-            <TeamSwitcher  />
-      
+          <TeamSwitcher />
         </SidebarHeader>
         <SidebarGroup className="p-0">
           <SidebarGroupContent>

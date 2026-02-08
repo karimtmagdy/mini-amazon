@@ -1,12 +1,7 @@
 import axios, { type InternalAxiosRequestConfig } from "axios";
 import { storageUtils } from "@/lib/tokens";
 import { authApi } from "@/core/auth/api.auth.service";
-import {
-  PATH_REFRESH_TOKEN,
-  PATH_SIGNIN,
-  PATH_SIGNUP,
-} from "@/lib/links/paths";
-
+import { PATH_REFRESH_TOKEN, PATH_SIGNIN } from "@/lib/links/paths";
 export const http = axios.create({
   baseURL: import.meta.env.DEV
     ? import.meta.env.VITE_DEV_URL
@@ -34,11 +29,9 @@ http.interceptors.response.use(
     const originalRequest = error.config as InternalAxiosRequestConfig & {
       _retry?: boolean;
     };
-
     // Paths that should NOT trigger a retry/refresh
     const isAuthRequest =
       originalRequest.url === PATH_SIGNIN ||
-      originalRequest.url === PATH_SIGNUP ||
       originalRequest.url === PATH_REFRESH_TOKEN;
 
     // Handle 401 Unauthorized errors
@@ -50,9 +43,10 @@ http.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        // According to your log, the response is: { status, message, data: { token } }
         const res = await authApi.refresh();
         const newToken = res?.data?.token;
+
+        console.log("Token Refreshed Successfully:", !!newToken);
 
         if (newToken) {
           // Update the token in localStorage
@@ -69,6 +63,7 @@ http.interceptors.response.use(
         storageUtils.removeToken();
         storageUtils.removeUser();
         window.location.href = PATH_SIGNIN;
+
         return Promise.reject(refreshError);
       }
     }

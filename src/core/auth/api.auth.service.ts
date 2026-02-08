@@ -26,7 +26,6 @@ import {
 export const authApi = {
   login: async (data: FormSignInSchema) => {
     const res = await http.post<ResponseAuthLogin<UserDto>>(PATH_SIGNIN, data);
-    console.log(res);
     return res;
   },
   register: async (data: FormSignUpSchema) => {
@@ -60,6 +59,7 @@ export const authApi = {
     const res = (await http.post<ResponseDto<{ token: string }>>(
       PATH_REFRESH_TOKEN,
     )) as unknown as ResponseDto<{ token: string }>;
+    console.log(res)
     return res;
   },
   //   verifyEmail: async (data: FormVerifyEmailSchema) => {
